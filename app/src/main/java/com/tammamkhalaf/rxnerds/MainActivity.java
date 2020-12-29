@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         }).doOnNext(c -> Log.d(TAG, "upStream c: " + c))
                 .debounce(2, TimeUnit.SECONDS)
                 .distinctUntilChanged()
-                .subscribe(s -> Log.d(TAG, "downStream s: hit API " + s));
+                .subscribe(s -> Log.d(TAG, "downStream s: hit API " + s));//
     }
 
 }

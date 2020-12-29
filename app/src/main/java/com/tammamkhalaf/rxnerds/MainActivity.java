@@ -51,15 +51,9 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         }).doOnNext(c -> Log.d(TAG, "upStream c: " + c))
-                .map(new Function<Object, Object>() {
-
-                    @Override
-                    public Object apply(Object o) throws Throwable {
-                        return Integer.parseInt(o.toString())*2;
-                    }
-                })
                 .debounce(2, TimeUnit.SECONDS)
-                .subscribe(s -> Log.d(TAG, "downStream s: " + s));
+                .distinctUntilChanged()
+                .subscribe(s -> Log.d(TAG, "downStream s: hit API " + s));
     }
 
 }
